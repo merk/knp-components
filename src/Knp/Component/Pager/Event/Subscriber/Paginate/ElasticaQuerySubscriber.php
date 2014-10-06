@@ -24,6 +24,7 @@ class ElasticaQuerySubscriber implements EventSubscriberInterface
             if ($results->hasFacets()) {
                 $event->setCustomPaginationParameter('facets', $results->getFacets());
             }
+            $event->setCustomPaginationParameter('resultSet', $results);
             $event->items = $results->getResults();
             $event->stopPropagation();
         }
